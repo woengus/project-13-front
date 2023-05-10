@@ -1,7 +1,7 @@
 import React from "react";
-import chaticon from "../asset/img/icon-chat.png";
-import moneyicon from "../asset/img/icon-money.png";
-import securityicon from "../asset/img/icon-security.png";
+import chaticon from "../assets/img/icon-chat.png";
+import moneyicon from "../assets/img/icon-money.png";
+import securityicon from "../assets/img/icon-security.png";
 import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
@@ -18,7 +18,8 @@ const Home = () => {
       <section className="features">
         <h2 className="sr-only">Features</h2>
         <div className="feature-item">
-          <NavLink src={chaticon} alt="Chat Icon" className="feature-icon" />
+          <img src={chaticon} alt="Chat Icon" className="feature-icon" />
+
           <h3 className="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -26,7 +27,7 @@ const Home = () => {
           </p>
         </div>
         <div className="feature-item">
-          <NavLink src={moneyicon} alt="Chat Icon" className="feature-icon" />
+          <img src={moneyicon} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">
             More savings means higher rates
           </h3>
@@ -35,11 +36,7 @@ const Home = () => {
           </p>
         </div>
         <div className="feature-item">
-          <NavLink
-            src={securityicon}
-            alt="Chat Icon"
-            className="feature-icon"
-          />
+          <img src={securityicon} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">Security you can trust</h3>
           <p>
             We use top of the line encryption to make sure your data and money

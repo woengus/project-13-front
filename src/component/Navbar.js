@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../asset/img/argentBankLogo.png";
+import logo from "../assets/img/argentBankLogo.png";
 const Navbar = () => {
   return (
     <nav className="main-nav">
