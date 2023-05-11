@@ -2,16 +2,20 @@ import React from "react";
 import { useState } from "react";
 import { login } from "../services/user";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getToken } from "../store/user.slice";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); //redirige vers la page
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password)
       .then((token) => {
         console.log(token);
         localStorage.token = token;
+        dispatch(getToken({ token: token }));
         navigate("/user");
       })
       .catch((error) => {

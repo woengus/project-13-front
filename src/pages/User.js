@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getProfile } from "../services/user";
 
 function User() {
+  useEffect(() => {
+    if (localStorage.token) {
+      getProfile(localStorage.token).then((res) => {
+        console.log(res);
+      });
+    }
+  }, []);
   return (
     <div>
       <main className="main bg-dark">

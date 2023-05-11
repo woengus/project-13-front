@@ -15,3 +15,16 @@ export const login = (email, password) => {
       });
   });
 };
+
+export const getProfile = (token) => {
+  axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+  return axios
+    .post(`${url}/profile`)
+    .then((res) => {
+      console.log(res.data);
+      return res.data.body;
+    })
+    .catch((error) => {
+      return error;
+    });
+};

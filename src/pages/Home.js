@@ -2,7 +2,7 @@ import React from "react";
 import chaticon from "../assets/img/icon-chat.png";
 import moneyicon from "../assets/img/icon-money.png";
 import securityicon from "../assets/img/icon-security.png";
-import { NavLink } from "react-router-dom";
+
 const Home = () => {
   return (
     <main>
