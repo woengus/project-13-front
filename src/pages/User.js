@@ -7,6 +7,8 @@ function User() {
       getProfile(localStorage.token).then((res) => {
         console.log(res);
       });
+    } else {
+      window.location.href = "/signin";
     }
   }, []);
   return (

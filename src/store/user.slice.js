@@ -18,8 +18,13 @@ export const userSlice = createSlice({
       state.token = payload.token;
       state.isLogged = true;
     },
+    setProfile: (state, { payload }) => {
+      state.user = payload;
+      console.log(payload);
+    },
   },
 });
 
-export const { getToken } = userSlice.actions;
+export const { getToken, setProfile } = userSlice.actions;
+
 export default userSlice.reducer;
