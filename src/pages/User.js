@@ -1,11 +1,35 @@
-import React, { useEffect } from "react";
-import { getProfile } from "../services/user";
+import React, { useEffect, useState } from "react";
+import { getProfile, updateProfile } from "../services/user";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfile, getToken } from "../store/user.slice";
 
 function User() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const [isEdit, setEdit] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      firstName: e.target[0].value,
+      lastName: e.target[1].value,
+    };
+    updateProfile(localStorage.token, data).then((res) => {
+      dispatch(setProfile(res));
+    });
+    handleEdit();
+  };
+
+  const handleEdit = () => {
+    setEdit(!isEdit);
+  };
+
   useEffect(() => {
     if (localStorage.token) {
       getProfile(localStorage.token).then((res) => {
         console.log(res);
+        dispatch(getToken({ token: localStorage.token }));
+        dispatch(setProfile(res));
       });
     } else {
       window.location.href = "/signin";
@@ -14,14 +38,28 @@ function User() {
   return (
     <div>
       <main className="main bg-dark">
-        <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            Tony Jarvis!
-          </h1>
-          <button className="edit-button">Edit Name</button>
-        </div>
+        {!isEdit ? (
+          <div className="header">
+            <h1>
+              Welcome back
+              <br />
+              {user.firstName} {user.lastName}
+            </h1>
+            <button className="edit-button" onClick={handleEdit}>
+              Edit Name
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <input type="text" />
+            <input type="text" />
+            <button type="submit">Save</button>
+            <button type="button" onClick={handleEdit}>
+              Cancel
+            </button>
+          </form>
+        )}
+
         <h2 className="sr-only">Accounts</h2>
         <section className="account">
           <div className="account-content-wrapper">

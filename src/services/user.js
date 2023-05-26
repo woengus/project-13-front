@@ -28,3 +28,15 @@ export const getProfile = (token) => {
       return error;
     });
 };
+
+export const updateProfile = (token, data) => {
+  axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+  return axios
+    .put(`${url}/profile`, data)
+    .then((res) => {
+      return res.data.body;
+    })
+    .catch((error) => {
+      return error;
+    });
+};

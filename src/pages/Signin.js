@@ -9,6 +9,7 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isError, setError] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password)
@@ -16,10 +17,11 @@ const Signin = () => {
         console.log(token);
         localStorage.token = token;
         dispatch(getToken({ token: token }));
-        navigate("/user");
+        navigate("/profile");
       })
       .catch((error) => {
         console.log(error);
+        setError(true);
       });
   };
   return (
@@ -52,6 +54,7 @@ const Signin = () => {
             <button className="sign-in-button" type="submit">
               Sign In
             </button>
+            {isError && <p className="error">Invalid email or password</p>}
           </form>
         </section>
       </main>

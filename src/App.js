@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     if (localStorage.token) {
       getProfile(localStorage.token).then((res) => {
-        console.log(res);
         dispatch(setProfile(res));
       });
     }
@@ -23,7 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/profile" element={<User />} />
         <Route path="/signin" element={<Signin />} />
       </Routes>
       <Footer />

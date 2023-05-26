@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
+  const user = useSelector((state) => state.user.user);
   console.log(isLogged);
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -22,9 +23,9 @@ const Navbar = () => {
       </NavLink>
       {isLogged ? (
         <div>
-          <NavLink className="main-nav-item" to="/user">
+          <NavLink className="main-nav-item" to="/profile">
             <i className="fa fa-user-circle"></i>
-            Tony
+            {user.firstName}
           </NavLink>
           <NavLink className="main-nav-item" to="/signin" onClick={logout}>
             <i className="fa fa-sign-out"></i>
