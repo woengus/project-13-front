@@ -43,7 +43,7 @@ function User() {
             <h1>
               Welcome back
               <br />
-              {user.firstName} {user.lastName}
+              {user.firstName} {user.lastName} !
             </h1>
             <button className="edit-button" onClick={handleEdit}>
               Edit Name

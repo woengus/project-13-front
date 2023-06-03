@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/img/argentBankLogo.png";
 import { useSelector } from "react-redux";
-
+import { HiUserCircle } from "react-icons/ai";
 const Navbar = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const user = useSelector((state) => state.user.user);
@@ -24,8 +24,9 @@ const Navbar = () => {
       {isLogged ? (
         <div>
           <NavLink className="main-nav-item" to="/profile">
-            <i className="fa fa-user-circle"></i>
-            {user.firstName}
+            <div className="flex">
+              <i className="fa fa-user-circle">{user.firstName}</i>
+            </div>
           </NavLink>
           <NavLink className="main-nav-item" to="/signin" onClick={logout}>
             <i className="fa fa-sign-out"></i>

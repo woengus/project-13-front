@@ -15,6 +15,7 @@ body {
 
 .main {
   flex: 1;
+  padding-bottom:80px;
 }
 
 .bg-dark {
@@ -264,7 +265,12 @@ body {
 .header {
   color: #fff;
   margin-bottom: 2rem;
+
 }
+.header h1 {
+  padding-top: 20px;
+}
+
 
 .transaction-button {
   display: block;
@@ -290,4 +296,10 @@ body {
   .transaction-button {
     width: 200px;
   }
+}
+.flex {
+  display: flex;
+}
+.fa-user-circl {
+  display: flex;
 }
