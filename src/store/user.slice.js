@@ -11,6 +11,8 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
+  //createSlice
+  //A function that accepts an initial state, an object of reducer functions, and a "slice name", and automatically generates action creators and action types that correspond to the reducers and state.
   name: "user",
   initialState,
   reducers: {
@@ -20,7 +22,7 @@ export const userSlice = createSlice({
     },
     setProfile: (state, { payload }) => {
       state.user = payload;
-      console.log(payload);
+      //console.log(payload);
     },
   },
 });

@@ -14,13 +14,13 @@ const Signin = () => {
     e.preventDefault();
     login(email, password)
       .then((token) => {
-        console.log(token);
+        //console.log(token);
         localStorage.token = token;
         dispatch(getToken({ token: token }));
         navigate("/profile");
       })
       .catch((error) => {
-        console.log(error);
+        //console.log(error);
         setError(true);
       });
   };

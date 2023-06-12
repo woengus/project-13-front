@@ -7,17 +7,26 @@ function User() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const [isEdit, setEdit] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      firstName: e.target[0].value,
-      lastName: e.target[1].value,
-    };
-    updateProfile(localStorage.token, data).then((res) => {
-      dispatch(setProfile(res));
-    });
-    handleEdit();
+    const firstName = e.target[0].value;
+    const lastName = e.target[1].value;
+    if (firstName.length > 0 && lastName.length > 0) {
+      const data = {
+        firstName,
+        lastName,
+      };
+      updateProfile(localStorage.token, data).then((res) => {
+        dispatch(setProfile(res));
+      });
+      handleEdit();
+      setError("");
+    } else {
+      setError("Please enter both first name and last name.");
+      alert("Please enter both first name and last name.");
+    }
   };
 
   const handleEdit = () => {
@@ -35,6 +44,7 @@ function User() {
       window.location.href = "/signin";
     }
   }, []);
+
   return (
     <div>
       <main className="main bg-dark">

@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const user = useSelector((state) => state.user.user);
-  console.log(isLogged);
+  //useSelector and useDispatch are a set of hooks to use as alternatives to the existing connect() higher-order component. The equivalent of map state to props is useSelector. It takes in a function argument that returns the part of the state that you want. The equivalent of map dispatch to props is useDispatch. We can invoke useDispatch and store it to a variable, dispatch. Dispatch will work with the allActions imported from the actions folder.
+  //console.log(isLogged);
   const logout = () => {
     window.localStorage.removeItem("token");
     window.location.href = "/signin";
